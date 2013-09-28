@@ -14,11 +14,7 @@ public final class RPlite extends JavaPlugin{
 		
 		
 		//Start getting commands
-		getCommand("phoenix").setExecutor(new RPliteCommandExecutor(this));
-		getCommand("phoenix status").setExecutor(new RPliteCommandExecutor (this));
-		getCommand("phoenix join").setExecutor(new RPliteCommandExecutor(this));
-		getCommand("phoenix list").setExecutor(new RPliteCommandExecutor(this));
-		getCommand("phoenix version").setExecutor(new RPliteCommandExecutor(this));
+		getCommand("mach").setExecutor(new RPliteCommandExecutor);
 		
 		
 	}
