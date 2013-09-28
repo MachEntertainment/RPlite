@@ -1,0 +1,11 @@
+name: RPlite
+main: com.machentertainment.RPlite
+Version: 0.1ALPHA
+website:
+http://machentertainment.com/
+depend: [Vault]
+
+commands:
+   Mach:
+      description: Shows the help menu.
+      usage: /Mach <param>
