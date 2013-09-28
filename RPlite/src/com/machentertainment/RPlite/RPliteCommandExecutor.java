@@ -24,6 +24,11 @@ public class RPliteCommandExecutor implements CommandExecutor{
 				
 				return true;
 			}
+			if(args.length == 1){
+				if(args[1].equalsIgnoreCase("join")){
+					plugin.sendPlayer(playerObj, "Select a class to join.  Type /Mach Classes to see the list.");
+				}
+			}
 		}
 		
 		return false;
