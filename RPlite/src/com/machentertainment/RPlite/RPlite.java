@@ -1,7 +1,6 @@
 package com.machentertainment.RPlite;
 
 import java.util.List;
-
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.file.FileConfiguration;
