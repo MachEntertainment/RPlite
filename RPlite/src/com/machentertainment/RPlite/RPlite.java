@@ -32,9 +32,19 @@ public final class RPlite extends JavaPlugin{
 			verbose = false;
 		}
 		
-		
+		sendLog(info, "Registering player commands");
 		//Start getting commands
 		getCommand("mach").setExecutor(new RPliteCommandExecutor(this));
+		getCommand("mach join").setExecutor(new RPliteCommandExecutor(this));
+		getCommand("mach classes").setExecutor(new RPliteCommandExecutor(this));
+		getCommand("mach help").setExecutor(new RPliteCommandExecutor(this));
+		getCommand("mach leaveclass").setExecutor(new RPliteCommandExecutor(this));
+		getCommand("mach join farmer").setExecutor(new RPliteCommandExecutor(this));
+		getCommand("mach join blacksmith").setExecutor(new RPliteCommandExecutor(this));
+		getCommand("mach join banker").setExecutor(new RPliteCommandExecutor(this));
+		getCommand("mach join baker").setExecutor(new RPliteCommandExecutor(this));
+		getCommand("mach join merchant").setExecutor(new RPliteCommandExecutor(this));
+		getCommand("mach join noble").setExecutor(new RPliteCommandExecutor(this));
 		
 		//Vault
 		if (!setupEconomy() ) {
