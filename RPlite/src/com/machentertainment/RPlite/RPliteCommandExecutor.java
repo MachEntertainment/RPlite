@@ -19,7 +19,7 @@ public class RPliteCommandExecutor implements CommandExecutor{
 	@Override
 	public boolean onCommand (org.bukkit.command.CommandSender sender,org.bukkit.command.Command cmd, String label, String[] args){
 		
-		if(cmd.getName().equalsIgnoreCase("Mach")) {
+		if(cmd.getName().equalsIgnoreCase("mach")) {
 			
 			String playerName = sender.getName();
 			Player playerObj = plugin.getServer().getPlayer(playerName);
