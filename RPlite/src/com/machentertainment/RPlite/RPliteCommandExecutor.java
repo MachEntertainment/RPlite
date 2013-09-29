@@ -4,8 +4,6 @@ import org.bukkit.ChatColor;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.entity.Player;
 
-import com.machentertainment.phoenix.PhoenixPlayerManager;
-
 public class RPliteCommandExecutor implements CommandExecutor{
 	
 	private RPlite plugin;
