@@ -1,6 +1,5 @@
 package com.machentertainment.RPlite;
 
-import net.milkbowl.vault.economy.EconomyResponse;
 
 public class RPlitePaymentProcessor {
 	
@@ -10,20 +9,21 @@ public class RPlitePaymentProcessor {
 		this.plugin = plugin;
 	}
 	
-	public void paymentAdd(int payment, String name){
+	public void paymentAdd(int payment, String playerName){
 		
-			EconomyResponse r = plugin.econ.depositPlayer(name, payment);
+			RPlite.econ.depositPlayer(playerName, payment);
 		
 	}
 	
-	public boolean paymentSub(int payment, String name){
+	public boolean paymentSub(int payment, String playerName){
 		
-		if(plugin.econ.has(name, payment) == true){
-			EconomyResponse r = plugin.econ.withdrawPlayer(name, payment);
+		if(RPlite.econ.has(playerName, payment) == true){
+			RPlite.econ.withdrawPlayer(playerName, payment);
 			return true;
 		}else{
 			return false;
 		}
+		
 	}
 
 }

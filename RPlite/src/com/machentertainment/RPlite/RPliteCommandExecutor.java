@@ -7,6 +7,8 @@ import org.bukkit.entity.Player;
 public class RPliteCommandExecutor implements CommandExecutor{
 	
 	private RPlite plugin;
+	RPlitePaymentProcessor payment = new RPlitePaymentProcessor(plugin);
+	RPlitePermissionProcessor perm = new RPlitePermissionProcessor(plugin);
 	
 	public RPliteCommandExecutor(RPlite plugin){
 		this.plugin = plugin;
@@ -14,6 +16,7 @@ public class RPliteCommandExecutor implements CommandExecutor{
 	
 	@Override
 	public boolean onCommand (org.bukkit.command.CommandSender sender,org.bukkit.command.Command cmd, String label, String[] args){
+
 		
 		if(cmd.getName().equalsIgnoreCase("Mach")) {
 			
@@ -70,7 +73,14 @@ public class RPliteCommandExecutor implements CommandExecutor{
 			}
 			if(args.length == 2){
 				if(args[2].equalsIgnoreCase("Farmer")){
-					plugin.sendPlayer(playerObj, ChatColor.GREEN + "Successfully joined Farmer");
+					int classCost = 100;
+					
+					if(payment.paymentSub(classCost, playerName) == true){
+						
+						
+						plugin.sendPlayer(playerObj, ChatColor.GREEN + "Successfully joined Farmer");	
+					}
+					
 				}
 				//TODO
 			}
