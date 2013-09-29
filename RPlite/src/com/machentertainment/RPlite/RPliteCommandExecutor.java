@@ -71,7 +71,16 @@ public class RPliteCommandExecutor implements CommandExecutor{
 			}
 			if(args.length == 2){
 				if(args[2].equalsIgnoreCase("Blacksmith")){
-					plugin.sendPlayer(playerObj, "Successfully joined Blacksmith");
+					int price = 300;
+					
+					if(payment.paymentSub(price, playerName) == true){
+						
+						permission.groupAdd(world, playerName, "blacksmith");
+						plugin.sendPlayer(playerObj, "Successfully joined Blacksmith");
+						
+					}else{
+						plugin.sendPlayer(playerObj, "You do not have sufficient funds!");
+					}
 				}
 				//TODO
 			}
@@ -92,25 +101,61 @@ public class RPliteCommandExecutor implements CommandExecutor{
 			}
 			if(args.length == 2){
 				if(args[2].equalsIgnoreCase("Merchant")){
-					plugin.sendPlayer(playerObj, "Successfully joined Merchant");
+					int price = 500;
+					
+					if(payment.paymentSub(price, playerName) == true){
+						
+						permission.groupAdd(world, playerName, "merchant");
+						plugin.sendPlayer(playerObj, "Successfully joined Merchant");
+						
+					}else{
+						plugin.sendPlayer(playerObj, "You do not have sufficient funds!");
+					}
 				}
 				//TODO
 			}
 			if(args.length == 2){
 				if(args[2].equalsIgnoreCase("Baker")){
-					plugin.sendPlayer(playerObj, "Successfully joined Baker");
+					int price = 300;
+					
+					if(payment.paymentSub(price, playerName) == true){
+						
+						permission.groupAdd(world, playerName, "baker");
+						plugin.sendPlayer(playerObj, "Successfully joined Baker");
+						
+					}else{
+						plugin.sendPlayer(playerObj, "You do not have sufficient funds!");
+					}
 				}
 				//TODO
 			}
 			if(args.length == 2){
 				if(args[2].equalsIgnoreCase("Banker")){
-					plugin.sendPlayer(playerObj, "Successfully joined Banker");
+					int price = 500;
+					
+					if(payment.paymentSub(price, playerName) == true){
+						
+						permission.groupAdd(world, playerName, "banker");
+						plugin.sendPlayer(playerObj, "Successfully joined Banker");
+						
+					}else{
+						plugin.sendPlayer(playerObj, "You do not have sufficient funds!");
+					}
 				}
 				//TODO
 			}
 			if(args.length == 2){
 				if(args[2].equalsIgnoreCase("Noble")){
-					plugin.sendPlayer(playerObj, "Successfully joined Noble");
+					int price = 1000;
+					
+					if(payment.paymentSub(price, playerName) == true){
+						
+						permission.groupAdd(world, playerName, "noble");
+						plugin.sendPlayer(playerObj, "Successfully joined Noble");
+						
+					}else{
+						plugin.sendPlayer(playerObj, "You do not have sufficient funds!");
+					}
 				}
 				//TODO
 			}
