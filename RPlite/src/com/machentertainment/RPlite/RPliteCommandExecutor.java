@@ -2,6 +2,7 @@ package com.machentertainment.RPlite;
 
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandExecutor;
+import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 public class RPliteCommandExecutor implements CommandExecutor{
@@ -17,13 +18,17 @@ public class RPliteCommandExecutor implements CommandExecutor{
 	}
 	
 	@Override
-	public boolean onCommand (org.bukkit.command.CommandSender sender,org.bukkit.command.Command cmd, String label, String[] args){
+	public boolean onCommand (CommandSender sender,org.bukkit.command.Command cmd, String label, String[] args){
 		
 		if(cmd.getName().equalsIgnoreCase("mach")) {
 			
 			String playerName = sender.getName();
 			Player playerObj = plugin.getServer().getPlayer(playerName);
 			String world = playerObj.getWorld().toString();
+			
+			plugin.sendLog("info", "A command is being executed.");
+			plugin.sendLog("info", "Player: " + playerName);
+			plugin.sendLog("info", "Command executing :" + cmd.toString());
 			
 			if(args.length == 0){
 				plugin.sendPlayer(playerObj, "Under Construction");
