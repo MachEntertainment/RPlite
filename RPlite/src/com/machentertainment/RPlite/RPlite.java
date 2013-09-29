@@ -7,6 +7,7 @@ import net.milkbowl.vault.chat.Chat;
 import net.milkbowl.vault.economy.Economy;
 import net.milkbowl.vault.permission.Permission;
 
+import org.bukkit.ChatColor;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.command.CommandSender;
@@ -79,7 +80,7 @@ public final class RPlite extends JavaPlugin{
 	
 	//Preformated message sending.
 	public void sendPlayer(Player player, String message){
-		player.sendMessage("[RPlite]: " + message);
+		player.sendMessage(ChatColor.GOLD + "[" + ChatColor.RED + "RPLite" + ChatColor.GOLD + "]: " + ChatColor.GREEN + message);
 	}
 	
 	//Console Logging (Config based)

@@ -6,6 +6,36 @@ http://machentertainment.com/
 depend: [Vault]
 
 commands:
+   Mach join Noble:
+      description: Joins the Banker class.
+      usage: /Mach join Banker
+   Mach join Merchant:
+      description: Joins the Merchant Class.
+      usage: /Mach join Merchant
+   Mach join Baker:
+      description: Joins the Baker Class.
+      usage: /Mach join Baker
+   Mach join Banker:
+      description: Joins the Banker Class.
+      usage: /Mach join Banker
+   Mach join Blacksmith:
+      description: Joins the blacksmith class.
+      usage: /Mach join blacksmith
+   Mach join Farmer:
+      description: Joins the farmer class.
+      usage: /Mach join Farmer
+   Mach leaveclass:
+      description: Leaves current class.
+      usage: /Mach leaveclass
+   Mach help:
+      description: Displays a help menu.
+      usage: /Mach help
+   Mach classess:
+      description: Displays a list of classes.
+      usage: /Mach classes
+   Mach join:
+      description: Allows you to join a class.
+      usage: /Mach join <class>
    Mach:
-      description: Shows the help menu.
+      description: Does nothing at the moment.
       usage: /Mach <param>
