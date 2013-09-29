@@ -10,11 +10,25 @@ public class RPlitePermissionProcessor {
 		this.plugin = plugin;
 	}
 	
+	/**
+	 * Adds player to a group.
+	 * @param world - String world name
+	 * @param playerName - String player's name
+	 * @param group - String group name to add
+	 */
+	
 	public void groupAdd(String world, String playerName, String group){
 		
 		RPlite.perms.playerAddGroup(world, playerName, group);
 		
 	}
+	
+	/**
+	 * Removes player from a group.
+	 * @param world - String name
+	 * @param playerName - String player's name
+	 * @param group - String group to test
+	 */
 	
 	public void groupSub(String world, String playerName, String group){
 		
@@ -22,6 +36,13 @@ public class RPlitePermissionProcessor {
 		
 	}
 	
+	
+	/**
+	 * Tests is player is within a defined group.
+	 * @param world - String name
+	 * @param PlayerObj - Player player entity
+	 * @return True is the player has a group, false otherwise.
+	 */
 	public boolean isInGroup(String world, Player PlayerObj){
 		plugin.sendLog("info","Permission Processor: Running a check to see if " + PlayerObj.getDisplayName() + "is in group.");
 		
