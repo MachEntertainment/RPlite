@@ -33,26 +33,26 @@ public class RPliteCommandExecutor implements CommandExecutor{
 			}
 			if(args.length == 1){
 				if(args[1].equalsIgnoreCase("classes")){
-					plugin.sendPlayer(playerObj, ChatColor.GOLD + "____RPLite Class List____");
-					plugin.sendPlayer(playerObj, "Class - Description");
-					plugin.sendPlayer(playerObj, "Baker - (MORE INFO HERE)");
-					plugin.sendPlayer(playerObj, "Banker - (MORE INFO HERE)");
-					plugin.sendPlayer(playerObj, "Blacksmith - (MORE INFO HERE)");
-					plugin.sendPlayer(playerObj, "Farmer - (MORE INFO HERE)");
-					plugin.sendPlayer(playerObj, "Merchant - (MORE INFO HERE)");
-					plugin.sendPlayer(playerObj, "Noble - (MORE INFO HERE)");
+					sender.sendMessage(ChatColor.GOLD + "____RPLite Class List____");
+					sender.sendMessage(ChatColor.GREEN + "Class - Description");
+					sender.sendMessage(ChatColor.GREEN + "Baker - (MORE INFO HERE)");
+					sender.sendMessage(ChatColor.GREEN + "Banker - (MORE INFO HERE)");
+					sender.sendMessage(ChatColor.GREEN + "Blacksmith - (MORE INFO HERE)");
+					sender.sendMessage(ChatColor.GREEN + "Farmer - (MORE INFO HERE)");
+					sender.sendMessage(ChatColor.GREEN + "Merchant - (MORE INFO HERE)");
+					sender.sendMessage(ChatColor.GREEN + "Noble - (MORE INFO HERE)");
 				}
 				//TODO
 			}
 			if(args.length == 1){
 				if(args[1].equalsIgnoreCase("help")){
-					plugin.sendPlayer(playerObj, ChatColor.GOLD + "____RPLite Help Menu____");
-					plugin.sendPlayer(playerObj, "Command: Description");
-					plugin.sendPlayer(playerObj, "/mach: Does something when we code it to");
-					plugin.sendPlayer(playerObj, "/mach help: Displays help menu");
-					plugin.sendPlayer(playerObj, "/mach classes: Lists classes");
-					plugin.sendPlayer(playerObj, "/mach join <class>: Joins a class");
-					plugin.sendPlayer(playerObj, "/mach leaveclass: Leaves current class");
+					sender.sendMessage(ChatColor.GOLD + "____RPLite Help Menu____");
+					sender.sendMessage(ChatColor.GREEN + "Command: Description");
+					sender.sendMessage(ChatColor.GREEN + "/mach: Does something when we code it to");
+					sender.sendMessage(ChatColor.GREEN + "/mach help: Displays help menu");
+					sender.sendMessage(ChatColor.GREEN + "/mach classes: Lists classes");
+					sender.sendMessage(ChatColor.GREEN + "/mach join <class>: Joins a class");
+					sender.sendMessage(ChatColor.GREEN + "/mach leaveclass: Leaves current class");
 				}
 				//TODO
 			}
