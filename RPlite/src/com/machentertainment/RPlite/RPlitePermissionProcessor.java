@@ -1,5 +1,7 @@
 package com.machentertainment.RPlite;
 
+import org.bukkit.entity.Player;
+
 public class RPlitePermissionProcessor {
 	
 	private RPlite plugin;
@@ -20,10 +22,23 @@ public class RPlitePermissionProcessor {
 		
 	}
 	
-	public boolean isInGroup(String world, String playerName, String group){
-		//TODO
+	public boolean isInGroup(String world, Player PlayerObj){
+		plugin.sendLog("info","Permission Processor: Running a check to see if " + PlayerObj.getDisplayName() + "is in group.");
 		
-		return false;
+		String[] classGroups = {"farmer", "blacksmith", "baker", "merchang", "noble"};
+		Boolean hasGroup = false;
+		
+		for(String group : classGroups){
+			if(RPlite.perms.playerInGroup(PlayerObj, group) == true){
+				hasGroup = true;
+			}
+		}
+		
+		if(hasGroup == true){
+			return true;
+		}else{
+			return false;
+		}
 	}
 	
 	
