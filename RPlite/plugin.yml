@@ -1,5 +1,5 @@
 name: RPlite
-main: com.machentertainment.RPlite
+main: com.machentertainment.RPlite.RPlite
 version: 0.1ALPHA
 website: http://machentertainment.com/
 depend: [Vault]
@@ -29,7 +29,7 @@ commands:
    Mach help:
       description: Displays a help menu.
       usage: /Mach help
-   Mach classess:
+   Mach classes:
       description: Displays a list of classes.
       usage: /Mach classes
    Mach join:

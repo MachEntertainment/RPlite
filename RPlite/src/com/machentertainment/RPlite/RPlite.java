@@ -32,7 +32,7 @@ public final class RPlite extends JavaPlugin{
 			verbose = false;
 		}
 		
-		sendLog(info, "Registering player commands");
+		sendLog("info", "Registering player commands");
 		//Start getting commands
 		getCommand("mach").setExecutor(new RPliteCommandExecutor(this));
 		getCommand("mach join").setExecutor(new RPliteCommandExecutor(this));
