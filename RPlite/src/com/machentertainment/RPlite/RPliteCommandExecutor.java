@@ -25,7 +25,7 @@ public class RPliteCommandExecutor implements CommandExecutor{
 			
 			String playerName = sender.getName();
 			Player playerObj = plugin.getServer().getPlayer(playerName);
-			String world = playerObj.getWorld().toString();
+			String world = playerObj.getWorld().getName();
 			
 			plugin.sendLog("info", "A command is being executed.");
 			plugin.sendLog("info", "Player: " + playerName);
