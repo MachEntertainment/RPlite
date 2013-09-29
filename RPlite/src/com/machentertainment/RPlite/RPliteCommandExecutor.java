@@ -4,9 +4,15 @@ import org.bukkit.ChatColor;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.entity.Player;
 
+import com.machentertainment.phoenix.PhoenixPlayerManager;
+
 public class RPliteCommandExecutor implements CommandExecutor{
 	
 	private RPlite plugin;
+	
+	RPlitePaymentProcessor payment = new RPlitePaymentProcessor(plugin);
+	RPlitePermissionProcessor permission = new RPlitePermissionProcessor(plugin);
+	
 	
 	public RPliteCommandExecutor(RPlite plugin){
 		this.plugin = plugin;
@@ -19,6 +25,7 @@ public class RPliteCommandExecutor implements CommandExecutor{
 			
 			String playerName = sender.getName();
 			Player playerObj = plugin.getServer().getPlayer(playerName);
+			String world = playerObj.getWorld().toString();
 			
 			if(args.length == 0){
 				plugin.sendPlayer(playerObj, "Under Construction");
@@ -70,7 +77,16 @@ public class RPliteCommandExecutor implements CommandExecutor{
 			}
 			if(args.length == 2){
 				if(args[2].equalsIgnoreCase("Farmer")){
-					plugin.sendPlayer(playerObj, "Successfully joined Farmer");
+					int price = 100;
+					
+					if(payment.paymentSub(price, playerName) == true){
+						
+						permission.groupAdd(world, playerName, "farmer");
+						plugin.sendPlayer(playerObj, "Successfully joined Farmer");
+						
+					}else{
+						plugin.sendPlayer(playerObj, "You do no have sufficient funds!");
+					}
 				}
 				//TODO
 			}
