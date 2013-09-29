@@ -21,7 +21,6 @@ public class RPliteBlockBreakListener implements Listener {
         public void onBlockBreak(BlockBreakEvent event, World world){
                 Player player = event.getPlayer();
                 Block block = event.getBlock();
-                
         }
  
 }
