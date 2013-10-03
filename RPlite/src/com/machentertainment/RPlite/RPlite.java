@@ -26,6 +26,11 @@ public final class RPlite extends JavaPlugin{
 	public void onEnable() {
 		getLogger().info("RPlite is now starting.");
 		
+		if(this.getConfig().getInt("Version") != 1){
+			this.saveDefaultConfig();
+			getLogger().severe("The config file was malformed or missing.  Saving default config.");
+		}
+		
 		if(this.getConfig().getBoolean("Verbose") == true) {
 			verbose = true;
 		}else{
