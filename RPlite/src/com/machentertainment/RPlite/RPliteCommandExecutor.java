@@ -24,8 +24,14 @@ public class RPliteCommandExecutor implements CommandExecutor{
 		if(cmd.getName().equalsIgnoreCase("mach")) {
 			
 			String playerName = sender.getName();
-			Player playerObj = plugin.getServer().getPlayer(playerName);
-			String world = playerObj.getWorld().getName();
+			
+				Player playerObj = plugin.getServer().getPlayer(playerName);
+				String world = playerObj.getWorld().getName();
+				Boolean isPlayer = false;
+				
+				if (sender instanceof Player){
+					isPlayer = true;
+				}
 			
 			plugin.sendLog("info", "A command is being executed.");
 			plugin.sendLog("info", "Player: " + playerName);
@@ -37,12 +43,7 @@ public class RPliteCommandExecutor implements CommandExecutor{
 				return true;
 			}
 			if(args.length == 1){
-				if(args[1].equalsIgnoreCase("join")){
-					plugin.sendPlayer(playerObj, "Select a class to join.  Type /Mach classes to see the list.");
-				}
-				//TODO
-			}
-			if(args.length == 1){
+				
 				if(args[1].equalsIgnoreCase("classes")){
 					sender.sendMessage(ChatColor.GOLD + "____RPLite Class List____");
 					sender.sendMessage(ChatColor.GREEN + "Class - Description");
@@ -52,10 +53,10 @@ public class RPliteCommandExecutor implements CommandExecutor{
 					sender.sendMessage(ChatColor.GREEN + "Farmer - (MORE INFO HERE)");
 					sender.sendMessage(ChatColor.GREEN + "Merchant - (MORE INFO HERE)");
 					sender.sendMessage(ChatColor.GREEN + "Noble - (MORE INFO HERE)");
+					
+					//TODO
 				}
-				//TODO
-			}
-			if(args.length == 1){
+				
 				if(args[1].equalsIgnoreCase("help")){
 					sender.sendMessage(ChatColor.GOLD + "____RPLite Help Menu____");
 					sender.sendMessage(ChatColor.GREEN + "Command: Description");
@@ -64,104 +65,145 @@ public class RPliteCommandExecutor implements CommandExecutor{
 					sender.sendMessage(ChatColor.GREEN + "/mach classes: Lists classes");
 					sender.sendMessage(ChatColor.GREEN + "/mach join <class>: Joins a class");
 					sender.sendMessage(ChatColor.GREEN + "/mach leaveclass: Leaves current class");
+					
+					//TODO
 				}
-				//TODO
-			}
-			if(args.length == 1){
+				
+				if(args[1].equalsIgnoreCase("join")){
+					if(isPlayer == true){
+						plugin.sendPlayer(playerObj, "Select a class to join.  Type /Mach classes to see the list.");
+					}else{
+						plugin.sendMessage(sender, "Error you must be a player to use that command");
+					}
+					
+					//TODO
+				}
+				
 				if(args[1].equalsIgnoreCase("leaveclass")){
-					plugin.sendPlayer(playerObj, "Successfully left your class!");
+					if(isPlayer == true){
+						plugin.sendPlayer(playerObj, "Successfully left your class!");
+					}else{
+						plugin.sendMessage(sender, "Error you must be a player to use that command");
+					}
+					//TODO
 				}
-				//TODO
 			}
+			
 			if(args.length == 2){
+				
 				if(args[2].equalsIgnoreCase("Blacksmith")){
 					int price = 300;
 					
-					if(payment.paymentSub(price, playerName) == true){
-						
-						permission.groupAdd(world, playerName, "blacksmith");
-						plugin.sendPlayer(playerObj, "Successfully joined Blacksmith");
-						
+					if(isPlayer == true){
+						if(payment.paymentSub(price, playerName) == true){
+							
+							permission.groupAdd(world, playerName, "blacksmith");
+							plugin.sendPlayer(playerObj, "Successfully joined Blacksmith");
+							
+						}else{
+							plugin.sendPlayer(playerObj, "You do not have sufficient funds!");
+						}
 					}else{
-						plugin.sendPlayer(playerObj, "You do not have sufficient funds!");
+						plugin.sendMessage(sender, "Error you must be a player to use that command");
 					}
+					
+					//TODO
 				}
-				//TODO
-			}
-			if(args.length == 2){
+
 				if(args[2].equalsIgnoreCase("Farmer")){
 					int price = 100;
 					
-					if(payment.paymentSub(price, playerName) == true){
-						
-						permission.groupAdd(world, playerName, "farmer");
-						plugin.sendPlayer(playerObj, "Successfully joined Farmer");
-						
+					if(isPlayer == true){
+						if(payment.paymentSub(price, playerName) == true){
+							
+							permission.groupAdd(world, playerName, "farmer");
+							plugin.sendPlayer(playerObj, "Successfully joined Farmer");
+							
+						}else{
+							plugin.sendPlayer(playerObj, "You do no have sufficient funds!");
+						}
 					}else{
-						plugin.sendPlayer(playerObj, "You do no have sufficient funds!");
+						plugin.sendMessage(sender, "Error you must be a player to use that command");
 					}
+					
+					//TODO
 				}
-				//TODO
-			}
-			if(args.length == 2){
+
 				if(args[2].equalsIgnoreCase("Merchant")){
 					int price = 500;
 					
-					if(payment.paymentSub(price, playerName) == true){
-						
-						permission.groupAdd(world, playerName, "merchant");
-						plugin.sendPlayer(playerObj, "Successfully joined Merchant");
-						
+					if(isPlayer == true){
+						if(payment.paymentSub(price, playerName) == true){
+							
+							permission.groupAdd(world, playerName, "merchant");
+							plugin.sendPlayer(playerObj, "Successfully joined Merchant");
+							
+						}else{
+							plugin.sendPlayer(playerObj, "You do not have sufficient funds!");
+						}
 					}else{
-						plugin.sendPlayer(playerObj, "You do not have sufficient funds!");
+						plugin.sendMessage(sender, "Error you must be a player to use that command");
 					}
+					
+					//TODO
 				}
-				//TODO
-			}
-			if(args.length == 2){
+
 				if(args[2].equalsIgnoreCase("Baker")){
 					int price = 300;
 					
-					if(payment.paymentSub(price, playerName) == true){
-						
-						permission.groupAdd(world, playerName, "baker");
-						plugin.sendPlayer(playerObj, "Successfully joined Baker");
-						
+					if(isPlayer == true){
+						if(payment.paymentSub(price, playerName) == true){
+							
+							permission.groupAdd(world, playerName, "baker");
+							plugin.sendPlayer(playerObj, "Successfully joined Baker");
+							
+						}else{
+							plugin.sendPlayer(playerObj, "You do not have sufficient funds!");
+						}
 					}else{
-						plugin.sendPlayer(playerObj, "You do not have sufficient funds!");
+						plugin.sendMessage(sender, "Error you must be a player to use that command");
 					}
+					
+					//TODO
 				}
-				//TODO
-			}
-			if(args.length == 2){
+
 				if(args[2].equalsIgnoreCase("Banker")){
 					int price = 500;
 					
-					if(payment.paymentSub(price, playerName) == true){
-						
-						permission.groupAdd(world, playerName, "banker");
-						plugin.sendPlayer(playerObj, "Successfully joined Banker");
-						
+					if(isPlayer == true){
+						if(payment.paymentSub(price, playerName) == true){
+							
+							permission.groupAdd(world, playerName, "banker");
+							plugin.sendPlayer(playerObj, "Successfully joined Banker");
+							
+						}else{
+							plugin.sendPlayer(playerObj, "You do not have sufficient funds!");
+						}
 					}else{
-						plugin.sendPlayer(playerObj, "You do not have sufficient funds!");
+						plugin.sendMessage(sender, "Error you must be a player to use that command");
 					}
+					
+					//TODO
 				}
-				//TODO
-			}
-			if(args.length == 2){
+
 				if(args[2].equalsIgnoreCase("Noble")){
 					int price = 1000;
 					
-					if(payment.paymentSub(price, playerName) == true){
-						
-						permission.groupAdd(world, playerName, "noble");
-						plugin.sendPlayer(playerObj, "Successfully joined Noble");
-						
+					if(isPlayer == true){
+						if(payment.paymentSub(price, playerName) == true){
+							
+							permission.groupAdd(world, playerName, "noble");
+							plugin.sendPlayer(playerObj, "Successfully joined Noble");
+							
+						}else{
+							plugin.sendPlayer(playerObj, "You do not have sufficient funds!");
+						}
 					}else{
-						plugin.sendPlayer(playerObj, "You do not have sufficient funds!");
+						plugin.sendMessage(sender, "Error you must be a player to use that command");
 					}
+					
+					//TODO
 				}
-				//TODO
 			}
 		}
 		

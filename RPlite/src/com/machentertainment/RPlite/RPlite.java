@@ -98,6 +98,10 @@ public final class RPlite extends JavaPlugin{
 		player.sendMessage(ChatColor.GOLD + "[" + ChatColor.RED + "RPLite" + ChatColor.GOLD + "]: " + ChatColor.GREEN + message);
 	}
 	
+	public void sendMessage(CommandSender sender, String message){
+  		sender.sendMessage(ChatColor.GOLD + "[" + ChatColor.RED + "RPLite" + ChatColor.GOLD + "]: " + ChatColor.GREEN + message);
+  	}
+	
 	//Console Logging (Config based)
 	public void sendLog(String level, String Message){
 		
@@ -109,5 +113,6 @@ public final class RPlite extends JavaPlugin{
 			}
 		}
 	}
+
 
 }
