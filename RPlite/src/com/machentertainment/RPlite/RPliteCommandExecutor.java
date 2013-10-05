@@ -23,22 +23,30 @@ public class RPliteCommandExecutor implements CommandExecutor{
 		
 		if(cmd.getName().equalsIgnoreCase("mach")) {
 			
-			String playerName = sender.getName();
-			
-				Player playerObj = plugin.getServer().getPlayer(playerName);
-				String world = playerObj.getWorld().getName();
-				Boolean isPlayer = false;
+			if(sender == null){
+				plugin.sendLog("severe", "MAJOR ERROR, SENDER IS NULL!!  Skipping command Proccessing");
 				
-				if (sender instanceof Player){
-					isPlayer = true;
-				}
+				return false;
+			}
+			
+			String playerName = null;
+			String world = null;
+			Player playerObj = null;
+			Boolean isPlayer = false;
+				
+			if (sender instanceof Player){
+				isPlayer = true;
+				playerName = sender.getName();
+				playerObj = plugin.getServer().getPlayer(playerName);
+				world = playerObj.getWorld().getName();
+			}
 			
 			plugin.sendLog("info", "A command is being executed.");
-			plugin.sendLog("info", "Player: " + playerName);
+			plugin.sendLog("info", "Player: " + sender);
 			plugin.sendLog("info", "Command executing :" + cmd.toString());
 			
 			if(args.length == 0){
-				plugin.sendPlayer(playerObj, "Under Construction");
+					sender.sendMessage("Under Construction");
 				
 				return true;
 			}
