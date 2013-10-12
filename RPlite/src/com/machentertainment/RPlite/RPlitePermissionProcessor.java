@@ -41,25 +41,43 @@ public class RPlitePermissionProcessor {
 	 * Tests is player is within a defined group.
 	 * @param world - String name
 	 * @param PlayerObj - Player player entity
-	 * @return True is the player has a group, false otherwise.
+	 * @return True if the player has a group, false otherwise.
 	 */
-	public boolean isInGroup(String world, Player PlayerObj){
-		plugin.sendLog("info","Permission Processor: Running a check to see if " + PlayerObj.getDisplayName() + "is in group.");
+	public boolean isInGroup(String world, String player){
+		
+		if(player == null){
+//			plugin.sendLog("severe", "ERROR!! playerObj was NULL!!");
+			
+			return false;
+		}
+		if(world == null){
+//			plugin.sendLog("severe", "ERROR!! world was NULL!!");
+			
+			return false;
+		}
+		
+//		plugin.sendLog("info","Permission Processor: Running a check to see if " + player + "is in group.");
 		
 		String[] classGroups = {"farmer", "blacksmith", "baker", "merchang", "noble"};
 		Boolean hasGroup = false;
 		
 		for(String group : classGroups){
-			if(RPlite.perms.playerInGroup(PlayerObj, group) == true){
+			if(RPlite.perms.playerInGroup(world, player, group) == true){
+
 				hasGroup = true;
 			}
 		}
 		
 		if(hasGroup == true){
+//			plugin.sendLog("info", "Permission Processor: The Player is in a group.");
 			return true;
 		}else{
+//			plugin.sendLog("info", "Permission Processor: The Player is not in a group.");
 			return false;
 		}
+		
+
+
 	}
 	
 	

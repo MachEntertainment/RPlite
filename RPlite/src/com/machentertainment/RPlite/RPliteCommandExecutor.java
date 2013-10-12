@@ -41,7 +41,7 @@ public class RPliteCommandExecutor implements CommandExecutor{
 			plugin.sendLog("info", "Command Arguments: " + args.toString());
 			
 			if(args.length == 0){
-					sender.sendMessage("Under Construction");
+					plugin.sendMessage(sender, "Type /mach help for help or /mach classes for classes.");
 				
 				return true;
 			}
@@ -128,16 +128,21 @@ public class RPliteCommandExecutor implements CommandExecutor{
 					int price = 100;
 					
 					if(isPlayer == true){
-						if(payment.paymentSub(price, playerName) == true){
+						if(permission.isInGroup(world, playerName) == false){
+								
+							if(payment.paymentSub(price, playerName) == true){
 							
-							permission.isInGroup(world, playerObj);
-							
-							permission.groupAdd(world, playerName, "farmer");
-							plugin.sendPlayer(playerObj, "Successfully joined Farmer");
-							
-							return true;
+								permission.groupAdd(world, playerName, "farmer");
+								plugin.sendPlayer(playerObj, "Successfully joined Farmer");
+								
+								return true;
+							}else{
+								plugin.sendPlayer(playerObj, "You do no have sufficient funds!");
+								
+								return true;
+							}
 						}else{
-							plugin.sendPlayer(playerObj, "You do no have sufficient funds!");
+							plugin.sendPlayer(playerObj, "You are already in a class!");
 							
 							return true;
 						}
