@@ -1,7 +1,5 @@
 package com.machentertainment.RPlite;
 
-import org.bukkit.entity.Player;
-
 public class RPlitePermissionProcessor {
 	
 	private RPlite plugin;
@@ -34,7 +32,7 @@ public class RPlitePermissionProcessor {
 	
 	public void groupSub(String world, String playerName, String group){
 		
-		plugin.sendLog("info", "Removing " + playerName + " from group " + group);
+//		plugin.sendLog("info", "Removing " + playerName + " from group " + group);
 		RPlite.perms.playerRemoveGroup(world, playerName, group);
 		
 	}
@@ -59,7 +57,7 @@ public class RPlitePermissionProcessor {
 			return false;
 		}
 		
-		plugin.sendLog("info","Permission Processor: Running a check to see if " + player + "is in group.");
+//		plugin.sendLog("info","Permission Processor: Running a check to see if " + player + "is in group.");
 		
 		String[] classGroups = {"farmer", "blacksmith", "baker", "merchang", "noble"};
 		Boolean hasGroup = false;
@@ -72,10 +70,10 @@ public class RPlitePermissionProcessor {
 		}
 		
 		if(hasGroup == true){
-			plugin.sendLog("info", "Permission Processor: The Player is in a group.");
+//			plugin.sendLog("info", "Permission Processor: The Player is in a group.");
 			return true;
 		}else{
-			plugin.sendLog("info", "Permission Processor: The Player is not in a group.");
+//			plugin.sendLog("info", "Permission Processor: The Player is not in a group.");
 			return false;
 		}
 		

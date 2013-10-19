@@ -1,6 +1,5 @@
 package com.machentertainment.RPlite;
 
-import java.util.List;
 import java.util.logging.Logger;
 
 import net.milkbowl.vault.chat.Chat;
@@ -11,7 +10,6 @@ import org.bukkit.ChatColor;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.command.CommandSender;
-import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 
 public final class RPlite extends JavaPlugin{
