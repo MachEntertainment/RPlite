@@ -104,11 +104,13 @@ public final class RPlite extends JavaPlugin{
 	public void sendLog(String level, String Message){
 		
 		if(verbose == true){
-			if(level.equalsIgnoreCase("info")){
+			if(level.equals("info")){
 				getLogger().info(Message);
 			}else{
 				getLogger().warning(Message);
 			}
+		}else{
+			getLogger().warning(Message);
 		}
 	}
 

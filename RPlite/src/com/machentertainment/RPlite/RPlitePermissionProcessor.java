@@ -18,7 +18,7 @@ public class RPlitePermissionProcessor {
 	
 	public void groupAdd(String world, String playerName, String group){
 		
-//		plugin.sendLog("info", "Adding " + playerName + "to group " + group);
+		plugin.sendLog("info", "Adding " + playerName + "to group " + group);
 		RPlite.perms.playerAddGroup(world, playerName, group);
 		
 	}
