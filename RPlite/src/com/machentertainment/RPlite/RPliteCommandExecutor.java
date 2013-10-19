@@ -90,14 +90,21 @@ public class RPliteCommandExecutor implements CommandExecutor{
 								int price = 300;
 								
 								if(isPlayer == true){
-									if(payment.paymentSub(price, playerName) == true){
+									if(permission.isInGroup(world, playerName) == false){
+											
+										if(payment.paymentSub(price, playerName) == true){
 										
-										permission.groupAdd(world, playerName, "blacksmith");
-										plugin.sendPlayer(playerObj, "Successfully joined Blacksmith");
-										
-										return true;
+											permission.groupAdd(world, playerName, "blacksmith");
+											plugin.sendPlayer(playerObj, "Successfully joined Blacksmith");
+											
+											return true;
+										}else{
+											plugin.sendPlayer(playerObj, "You do no have sufficient funds!");
+											
+											return true;
+										}
 									}else{
-										plugin.sendPlayer(playerObj, "You do not have sufficient funds!");
+										plugin.sendPlayer(playerObj, "You are already in a class!");
 										
 										return true;
 									}
@@ -145,14 +152,21 @@ public class RPliteCommandExecutor implements CommandExecutor{
 								int price = 500;
 								
 								if(isPlayer == true){
-									if(payment.paymentSub(price, playerName) == true){
+									if(permission.isInGroup(world, playerName) == false){
+											
+										if(payment.paymentSub(price, playerName) == true){
 										
-										permission.groupAdd(world, playerName, "merchant");
-										plugin.sendPlayer(playerObj, "Successfully joined Merchant");
-										
-										return true;
+											permission.groupAdd(world, playerName, "merchant");
+											plugin.sendPlayer(playerObj, "Successfully joined Merchant");
+											
+											return true;
+										}else{
+											plugin.sendPlayer(playerObj, "You do no have sufficient funds!");
+											
+											return true;
+										}
 									}else{
-										plugin.sendPlayer(playerObj, "You do not have sufficient funds!");
+										plugin.sendPlayer(playerObj, "You are already in a class!");
 										
 										return true;
 									}
@@ -169,14 +183,21 @@ public class RPliteCommandExecutor implements CommandExecutor{
 								int price = 300;
 								
 								if(isPlayer == true){
-									if(payment.paymentSub(price, playerName) == true){
+									if(permission.isInGroup(world, playerName) == false){
+											
+										if(payment.paymentSub(price, playerName) == true){
 										
-										permission.groupAdd(world, playerName, "baker");
-										plugin.sendPlayer(playerObj, "Successfully joined Baker");
-										
-										return true;
+											permission.groupAdd(world, playerName, "baker");
+											plugin.sendPlayer(playerObj, "Successfully joined Baker");
+											
+											return true;
+										}else{
+											plugin.sendPlayer(playerObj, "You do no have sufficient funds!");
+											
+											return true;
+										}
 									}else{
-										plugin.sendPlayer(playerObj, "You do not have sufficient funds!");
+										plugin.sendPlayer(playerObj, "You are already in a class!");
 										
 										return true;
 									}
@@ -193,14 +214,21 @@ public class RPliteCommandExecutor implements CommandExecutor{
 								int price = 500;
 								
 								if(isPlayer == true){
-									if(payment.paymentSub(price, playerName) == true){
+									if(permission.isInGroup(world, playerName) == false){
+											
+										if(payment.paymentSub(price, playerName) == true){
 										
-										permission.groupAdd(world, playerName, "banker");
-										plugin.sendPlayer(playerObj, "Successfully joined Banker");
-										
-										return true;
+											permission.groupAdd(world, playerName, "banker");
+											plugin.sendPlayer(playerObj, "Successfully joined Banker");
+											
+											return true;
+										}else{
+											plugin.sendPlayer(playerObj, "You do no have sufficient funds!");
+											
+											return true;
+										}
 									}else{
-										plugin.sendPlayer(playerObj, "You do not have sufficient funds!");
+										plugin.sendPlayer(playerObj, "You are already in a class!");
 										
 										return true;
 									}
@@ -217,14 +245,21 @@ public class RPliteCommandExecutor implements CommandExecutor{
 								int price = 1000;
 								
 								if(isPlayer == true){
-									if(payment.paymentSub(price, playerName) == true){
+									if(permission.isInGroup(world, playerName) == false){
+											
+										if(payment.paymentSub(price, playerName) == true){
 										
-										permission.groupAdd(world, playerName, "noble");
-										plugin.sendPlayer(playerObj, "Successfully joined Noble");
-										
-										return true;
+											permission.groupAdd(world, playerName, "noble");
+											plugin.sendPlayer(playerObj, "Successfully joined Noble");
+											
+											return true;
+										}else{
+											plugin.sendPlayer(playerObj, "You do no have sufficient funds!");
+											
+											return true;
+										}
 									}else{
-										plugin.sendPlayer(playerObj, "You do not have sufficient funds!");
+										plugin.sendPlayer(playerObj, "You are already in a class!");
 										
 										return true;
 									}
@@ -254,12 +289,15 @@ public class RPliteCommandExecutor implements CommandExecutor{
 								permission.groupSub(world, playerName, args[1].toString());
 								
 								if(permission.isInGroup(world, playerName) == true){
-									plugin.sendPlayer(playerObj, "Error, you may have left the group, but you are still in a class.");
+									plugin.sendPlayer(playerObj, ChatColor.RED + "ERROR: "+ ChatColor.GREEN +"You may have left the group, but you are still in a class.");
 									return true;
 								}else{
 									plugin.sendPlayer(playerObj, "Successfully left your class!");
 									return true;
 								}
+							}else{
+								plugin.sendMessage(playerObj, "RPlite detects you are not in a group.  If this is an error, contact an Admin.");
+								return true;
 							}
 						}else{
 							plugin.sendMessage(sender, ChatColor.RED + "ERROR: "+ ChatColor.GREEN +" you must be a player to use that command");
