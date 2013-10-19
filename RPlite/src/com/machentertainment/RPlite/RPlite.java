@@ -43,7 +43,7 @@ public final class RPlite extends JavaPlugin{
 		getCommand("mach join").setExecutor(new RPliteCommandExecutor(this));
 		getCommand("mach classes").setExecutor(new RPliteCommandExecutor(this));
 		getCommand("mach help").setExecutor(new RPliteCommandExecutor(this));
-		getCommand("mach leaveclass").setExecutor(new RPliteCommandExecutor(this));
+		getCommand("mach leave").setExecutor(new RPliteCommandExecutor(this));
 		getCommand("mach join farmer").setExecutor(new RPliteCommandExecutor(this));
 		getCommand("mach join blacksmith").setExecutor(new RPliteCommandExecutor(this));
 		getCommand("mach join banker").setExecutor(new RPliteCommandExecutor(this));

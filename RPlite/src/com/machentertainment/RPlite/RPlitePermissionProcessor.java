@@ -6,6 +6,7 @@ public class RPlitePermissionProcessor {
 	
 	private RPlite plugin;
 	
+	
 	public RPlitePermissionProcessor(RPlite plugin){
 		this.plugin = plugin;
 	}
@@ -19,6 +20,7 @@ public class RPlitePermissionProcessor {
 	
 	public void groupAdd(String world, String playerName, String group){
 		
+//		plugin.sendLog("info", "Adding " + playerName + "to group " + group);
 		RPlite.perms.playerAddGroup(world, playerName, group);
 		
 	}
@@ -32,6 +34,7 @@ public class RPlitePermissionProcessor {
 	
 	public void groupSub(String world, String playerName, String group){
 		
+//		plugin.sendLog("info", "Removing " + playerName + " from group " + group);
 		RPlite.perms.playerRemoveGroup(world, playerName, group);
 		
 	}

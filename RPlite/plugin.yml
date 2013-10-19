@@ -38,3 +38,6 @@ commands:
    Mach:
       description: Does nothing at the moment.
       usage: /Mach <param>
+   Mach leave:
+      description: Leaves the designated class.
+      usage: /Mach leave <class>
