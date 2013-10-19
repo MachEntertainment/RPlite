@@ -20,7 +20,7 @@ public class RPlitePermissionProcessor {
 	
 	public void groupAdd(String world, String playerName, String group){
 		
-//		plugin.sendLog("info", "Adding " + playerName + "to group " + group);
+		plugin.sendLog("info", "Adding " + playerName + "to group " + group);
 		RPlite.perms.playerAddGroup(world, playerName, group);
 		
 	}
@@ -34,7 +34,7 @@ public class RPlitePermissionProcessor {
 	
 	public void groupSub(String world, String playerName, String group){
 		
-//		plugin.sendLog("info", "Removing " + playerName + " from group " + group);
+		plugin.sendLog("info", "Removing " + playerName + " from group " + group);
 		RPlite.perms.playerRemoveGroup(world, playerName, group);
 		
 	}
@@ -49,17 +49,17 @@ public class RPlitePermissionProcessor {
 	public boolean isInGroup(String world, String player){
 		
 		if(player == null){
-//			plugin.sendLog("severe", "ERROR!! playerObj was NULL!!");
+			plugin.sendLog("severe", "ERROR!! playerObj was NULL!!");
 			
 			return false;
 		}
 		if(world == null){
-//			plugin.sendLog("severe", "ERROR!! world was NULL!!");
+			plugin.sendLog("severe", "ERROR!! world was NULL!!");
 			
 			return false;
 		}
 		
-//		plugin.sendLog("info","Permission Processor: Running a check to see if " + player + "is in group.");
+		plugin.sendLog("info","Permission Processor: Running a check to see if " + player + "is in group.");
 		
 		String[] classGroups = {"farmer", "blacksmith", "baker", "merchang", "noble"};
 		Boolean hasGroup = false;
@@ -72,10 +72,10 @@ public class RPlitePermissionProcessor {
 		}
 		
 		if(hasGroup == true){
-//			plugin.sendLog("info", "Permission Processor: The Player is in a group.");
+			plugin.sendLog("info", "Permission Processor: The Player is in a group.");
 			return true;
 		}else{
-//			plugin.sendLog("info", "Permission Processor: The Player is not in a group.");
+			plugin.sendLog("info", "Permission Processor: The Player is not in a group.");
 			return false;
 		}
 		
