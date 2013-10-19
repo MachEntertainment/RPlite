@@ -105,7 +105,7 @@ public final class RPlite extends JavaPlugin{
 	//Console Logging (Config based)
 	public void sendLog(String level, String Message){
 		
-		if(verbose = true){
+		if(verbose == true){
 			if(level.equalsIgnoreCase("info")){
 				getLogger().info(Message);
 			}else{
