@@ -36,7 +36,13 @@ public class RPlitePermissionProcessor {
 		RPlite.perms.playerRemoveGroup(world, playerName, group);
 		
 	}
-	
+	/**
+	 * 
+	 * @param world - String name of world to test.
+	 * @param playerName - String player's name.
+	 * @param perm - String permission to test.
+	 * @return True if player has given permission, false otherwise.
+	 */
 	public boolean hasPerm(String world, String playerName, String perm){
 		
 		if(RPlite.perms.playerHas(world, playerName, perm) == true){

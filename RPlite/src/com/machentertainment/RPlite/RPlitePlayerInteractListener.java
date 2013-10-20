@@ -26,18 +26,24 @@ public class RPlitePlayerInteractListener implements Listener{
 	@EventHandler
     public void onPlayerInteract(PlayerInteractEvent event){
     	Player player = event.getPlayer();
-    	Material block = event.getClickedBlock().getType();
-    	Material tool = event.getPlayer().getItemInHand().getType();
     	Action click = event.getAction();
     	String world = player.getWorld().getName();
     	
-    	if(block != null){
-	    	if(Arrays.asList(farmingBlocks).contains(block) && Arrays.asList(farmingTools).contains(tool) && click == Action.RIGHT_CLICK_BLOCK && RPlite.perms.playerHas(world, player.getName(), "rplite.farmer") == false){
-	    		if(permission.hasPerm(world, player.getName(), "rplite.admin") == false && !(player.getGameMode() == GameMode.CREATIVE)){
-		    		plugin.getLogger().info("InteractListener: Farm event cancelled");
-		    		event.setCancelled(true);
-	    		}
-	    	}
-    	}
+	    if(event.getClickedBlock() != null && player.getItemInHand() != null){
+	    Material block = event.getClickedBlock().getType();
+	    Material tool = event.getPlayer().getItemInHand().getType();
+	    	
+		    plugin.getLogger().info("Player: " + player.getName());
+		    plugin.getLogger().info("Block: " + block.toString());
+		    plugin.getLogger().info("Tool: " + tool.toString());
+		    plugin.getLogger().info("Action: " + click.toString());
+		    	
+		    if(Arrays.asList(farmingBlocks).contains(block) && Arrays.asList(farmingTools).contains(tool) && click == Action.RIGHT_CLICK_BLOCK && RPlite.perms.playerHas(world, player.getName(), "rplite.farmer") == false){
+			    if(permission.hasPerm(world, player.getName(), "rplite.admin") == false && !(player.getGameMode() == GameMode.CREATIVE)){
+				    plugin.getLogger().info("InteractListener: Farm event cancelled");
+				    event.setCancelled(true);
+			    }
+		    }
+	    }
 	}
 }
