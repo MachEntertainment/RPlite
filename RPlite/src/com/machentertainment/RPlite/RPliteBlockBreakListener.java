@@ -8,6 +8,7 @@ import org.bukkit.World;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
@@ -30,29 +31,27 @@ public class RPliteBlockBreakListener implements Listener {
         public Material[] farmingTools = {Material.WOOD_HOE, Material.STONE_HOE, Material.IRON_HOE, Material.GOLD_HOE, Material.DIAMOND_HOE};
         public Material[] choppingTools = {Material.WOOD_AXE, Material.STONE_AXE, Material.IRON_AXE, Material.GOLD_AXE, Material.DIAMOND_AXE};
  
-        @EventHandler
-        public void onBlockBreak(BlockBreakEvent event, World world){
+        @EventHandler(priority = EventPriority.NORMAL)
+        public void onBlockBreak(BlockBreakEvent event){
                 Player player = event.getPlayer();
                 Block block = event.getBlock();
                 Material blockType = block.getType();
                 Material tool = event.getPlayer().getItemInHand().getType();
                 
                 if(Arrays.asList(diggingBlocks).contains(blockType) && !(Arrays.asList(diggingTools).contains(tool))){
+                	plugin.getLogger().info("Block listener: Dig event canelled.");
                 	event.setCancelled(true);
                 	plugin.sendPlayer(player, "You do not have the right tool");
                 }
                 
                 if(Arrays.asList(miningBlocks).contains(blockType) && !(Arrays.asList(miningTools).contains(tool))){
-                	event.setCancelled(true);
-                	plugin.sendPlayer(player, "You do not have the right tool");
-                }
-                
-                if(Arrays.asList(farmingBlocks).contains(blockType) && !(Arrays.asList(farmingTools).contains(tool))){
+                	plugin.getLogger().info("Block listener: Mining event canelled.");
                 	event.setCancelled(true);
                 	plugin.sendPlayer(player, "You do not have the right tool");
                 }
                 
                 if(Arrays.asList(choppingBlocks).contains(blockType) && !(Arrays.asList(choppingTools).contains(tool))){
+                	plugin.getLogger().info("Block listener: Chopping event canelled.");
                 	event.setCancelled(true);
                 	plugin.sendPlayer(player, "You do not have the right tool");
                 }

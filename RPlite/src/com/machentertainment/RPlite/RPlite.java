@@ -7,6 +7,7 @@ import net.milkbowl.vault.economy.Economy;
 import net.milkbowl.vault.permission.Permission;
 
 import org.bukkit.ChatColor;
+import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.command.CommandSender;
@@ -22,8 +23,11 @@ public final class RPlite extends JavaPlugin{
 	
 	@Override
 	public void onEnable() {
+		PluginManager pm = this.getServer().getPluginManager();
+		
 		getLogger().info("RPlite is now starting.");
 		
+		this.getConfig();
 		if(this.getConfig().getInt("Version") != 1){
 			this.saveDefaultConfig();
 			getLogger().severe("The config file was malformed or missing.  Saving default config.");
@@ -35,7 +39,7 @@ public final class RPlite extends JavaPlugin{
 			verbose = false;
 		}
 		
-		sendLog("info", "Registering player commands");
+		getLogger().info("Registering player commands");
 		//Start getting commands
 		getCommand("mach").setExecutor(new RPliteCommandExecutor(this));
 		getCommand("mach join").setExecutor(new RPliteCommandExecutor(this));
@@ -48,6 +52,10 @@ public final class RPlite extends JavaPlugin{
 		getCommand("mach join baker").setExecutor(new RPliteCommandExecutor(this));
 		getCommand("mach join merchant").setExecutor(new RPliteCommandExecutor(this));
 		getCommand("mach join noble").setExecutor(new RPliteCommandExecutor(this));
+		
+		getLogger().info("Registering listeners");
+		//Event listeners
+		pm.registerEvents(new RPliteBlockBreakListener(this), this);
 		
 		//Vault
 		if (!setupEconomy() ) {
