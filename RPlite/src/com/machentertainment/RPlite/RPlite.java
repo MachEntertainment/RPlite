@@ -56,6 +56,7 @@ public final class RPlite extends JavaPlugin{
 		getLogger().info("Registering listeners");
 		//Event listeners
 		pm.registerEvents(new RPliteBlockBreakListener(this), this);
+		pm.registerEvents(new RPlitePlayerInteractListener(this), this);
 		
 		//Vault
 		if (!setupEconomy() ) {

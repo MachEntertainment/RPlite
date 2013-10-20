@@ -18,7 +18,7 @@ public class RPlitePermissionProcessor {
 	
 	public void groupAdd(String world, String playerName, String group){
 		
-		plugin.sendLog("info", "Adding " + playerName + "to group " + group);
+//		plugin.sendLog("info", "Adding " + playerName + "to group " + group);
 		RPlite.perms.playerAddGroup(world, playerName, group);
 		
 	}
@@ -37,6 +37,16 @@ public class RPlitePermissionProcessor {
 		
 	}
 	
+	public boolean hasPerm(String world, String playerName, String perm){
+		
+		if(RPlite.perms.playerHas(world, playerName, perm) == true){
+			return true;
+		}else{
+			return false;
+		}
+		
+	}
+	
 	
 	/**
 	 * Tests is player is within a defined group.
@@ -47,12 +57,12 @@ public class RPlitePermissionProcessor {
 	public boolean isInGroup(String world, String player){
 		
 		if(player == null){
-			plugin.sendLog("severe", "ERROR!! playerObj was NULL!!");
+//			plugin.sendLog("severe", "ERROR!! playerObj was NULL!!");
 			
 			return false;
 		}
 		if(world == null){
-			plugin.sendLog("severe", "ERROR!! world was NULL!!");
+//			plugin.sendLog("severe", "ERROR!! world was NULL!!");
 			
 			return false;
 		}
