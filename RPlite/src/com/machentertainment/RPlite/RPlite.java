@@ -57,6 +57,7 @@ public final class RPlite extends JavaPlugin{
 		//Event listeners
 		pm.registerEvents(new RPliteBlockBreakListener(this), this);
 		pm.registerEvents(new RPlitePlayerInteractListener(this), this);
+		pm.registerEvents(new RPliteCraftingListener(this), this);
 		
 		//Vault
 		if (!setupEconomy() ) {

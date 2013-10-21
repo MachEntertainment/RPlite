@@ -1,6 +1,6 @@
 name: RPlite
 main: com.machentertainment.RPlite.RPlite
-version: 0.1ALPHA
+version: '1.0 BETA'
 website: http://machentertainment.com/
 depend: [Vault]
 

@@ -50,12 +50,12 @@ public class RPliteCommandExecutor implements CommandExecutor{
 				if(args[0].equalsIgnoreCase("classes")){
 					sender.sendMessage(ChatColor.GOLD + "____RPLite Class List____");
 					sender.sendMessage(ChatColor.GREEN + "Class - Description");
-					sender.sendMessage(ChatColor.GREEN + "Baker - (MORE INFO HERE)");
-					sender.sendMessage(ChatColor.GREEN + "Banker - (MORE INFO HERE)");
-					sender.sendMessage(ChatColor.GREEN + "Blacksmith - (MORE INFO HERE)");
-					sender.sendMessage(ChatColor.GREEN + "Farmer - (MORE INFO HERE)");
-					sender.sendMessage(ChatColor.GREEN + "Merchant - (MORE INFO HERE)");
-					sender.sendMessage(ChatColor.GREEN + "Noble - (MORE INFO HERE)");
+					sender.sendMessage(ChatColor.GREEN + "Baker - Has the ability to cook advanced foods.");
+					sender.sendMessage(ChatColor.GREEN + "Banker - Has the ability to loan money to players.");
+					sender.sendMessage(ChatColor.GREEN + "Blacksmith - Has the ability to create tools, weapons, and armour.");
+					sender.sendMessage(ChatColor.GREEN + "Farmer - Has the ability to farm food items.");
+					sender.sendMessage(ChatColor.GREEN + "Merchant - Has the ability to create shops.");
+					sender.sendMessage(ChatColor.GREEN + "Noble - Asthetic rank when a certain monetary amount is reached.");
 					
 					//TODO
 					return true;
@@ -70,7 +70,6 @@ public class RPliteCommandExecutor implements CommandExecutor{
 					sender.sendMessage(ChatColor.GREEN + "/mach join <class>: Joins a class");
 					sender.sendMessage(ChatColor.GREEN + "/mach leave <class>: Leaves the designated class.");
 					
-					//TODO
 					return true;
 				}
 				
@@ -114,7 +113,6 @@ public class RPliteCommandExecutor implements CommandExecutor{
 									return true;
 								}
 								
-								//TODO
 							}
 
 							if(args[1].equalsIgnoreCase("Farmer")){
@@ -145,7 +143,6 @@ public class RPliteCommandExecutor implements CommandExecutor{
 									return true;
 								}
 								
-								//TODO
 							}
 
 							if(args[1].equalsIgnoreCase("Merchant")){
@@ -176,7 +173,6 @@ public class RPliteCommandExecutor implements CommandExecutor{
 									return true;
 								}
 								
-								//TODO
 							}
 
 							if(args[1].equalsIgnoreCase("Baker")){
@@ -207,7 +203,6 @@ public class RPliteCommandExecutor implements CommandExecutor{
 									return true;
 								}
 								
-								//TODO
 							}
 
 							if(args[1].equalsIgnoreCase("Banker")){
@@ -238,7 +233,6 @@ public class RPliteCommandExecutor implements CommandExecutor{
 									return true;
 								}
 								
-								//TODO
 							}
 
 							if(args[1].equalsIgnoreCase("Noble")){
@@ -269,14 +263,12 @@ public class RPliteCommandExecutor implements CommandExecutor{
 									return true;
 								}
 								
-								//TODO
 							}
 						}else{
 							return false;
 						}
 					}
 					
-					//TODO
 				}
 				
 				if(args[0].equalsIgnoreCase("leave")){
@@ -306,7 +298,6 @@ public class RPliteCommandExecutor implements CommandExecutor{
 					}else{
 						plugin.sendMessage(playerObj, "/Mach leave <class>: Used to leave the designated class.");
 						return true;
-					//TODO
 				}
 			}
 		}else{
