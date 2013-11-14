@@ -131,6 +131,7 @@ public class RPliteCommandExecutor implements CommandExecutor{
 											return true;
 										}else{
 											plugin.sendPlayer(playerObj, "You do no have sufficient funds!");
+											plugin.sendPlayer(playerObj, "You need " + payment.paymentOverCharge(price, playerName));
 											
 											return true;
 										}
@@ -161,6 +162,7 @@ public class RPliteCommandExecutor implements CommandExecutor{
 											return true;
 										}else{
 											plugin.sendPlayer(playerObj, "You do no have sufficient funds!");
+											plugin.sendPlayer(playerObj, "You need " + payment.paymentOverCharge(price, playerName));
 											
 											return true;
 										}
@@ -191,6 +193,7 @@ public class RPliteCommandExecutor implements CommandExecutor{
 											return true;
 										}else{
 											plugin.sendPlayer(playerObj, "You do no have sufficient funds!");
+											plugin.sendPlayer(playerObj, "You need " + payment.paymentOverCharge(price, playerName));
 											
 											return true;
 										}
@@ -221,6 +224,7 @@ public class RPliteCommandExecutor implements CommandExecutor{
 											return true;
 										}else{
 											plugin.sendPlayer(playerObj, "You do no have sufficient funds!");
+											plugin.sendPlayer(playerObj, "You need " + payment.paymentOverCharge(price, playerName));
 											
 											return true;
 										}
@@ -251,6 +255,7 @@ public class RPliteCommandExecutor implements CommandExecutor{
 											return true;
 										}else{
 											plugin.sendPlayer(playerObj, "You do no have sufficient funds!");
+											plugin.sendPlayer(playerObj, "You need " + payment.paymentOverCharge(price, playerName));
 											
 											return true;
 										}
