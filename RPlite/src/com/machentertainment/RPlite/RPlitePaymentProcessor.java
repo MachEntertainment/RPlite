@@ -37,5 +37,15 @@ public class RPlitePaymentProcessor {
 		}
 		
 	}
+	/**
+	 * Finds the over charge on a transaction.
+	 * @param payment - The amount to pay.
+	 * @param playerName - The player paying
+	 * @return The amount the player over charged DOUBLE
+	 */
+	public double paymentOverCharge(int payment, String playerName){
+		double diff = payment - RPlite.econ.getBalance(playerName);
+		return diff;
+	}
 
 }

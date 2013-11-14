@@ -42,6 +42,7 @@ public class RPliteCommandExecutor implements CommandExecutor{
 			
 			if(args.length == 0){
 					plugin.sendMessage(sender, "Type /mach help for help or /mach classes for classes.");
+					plugin.sendMessage(sender, "Version: " + plugin.getDescription().getVersion());
 				
 				return true;
 			}
@@ -49,7 +50,7 @@ public class RPliteCommandExecutor implements CommandExecutor{
 				
 				if(args[0].equalsIgnoreCase("classes")){
 					sender.sendMessage(ChatColor.GOLD + "____RPLite Class List____");
-					sender.sendMessage(ChatColor.GREEN + "Class - Description");
+					sender.sendMessage(ChatColor.DARK_GREEN + "Class - Description");
 					sender.sendMessage(ChatColor.GREEN + "Baker - Has the ability to cook advanced foods.");
 					sender.sendMessage(ChatColor.GREEN + "Banker - Has the ability to loan money to players.");
 					sender.sendMessage(ChatColor.GREEN + "Blacksmith - Has the ability to create tools, weapons, and armour.");
@@ -99,6 +100,7 @@ public class RPliteCommandExecutor implements CommandExecutor{
 											return true;
 										}else{
 											plugin.sendPlayer(playerObj, "You do no have sufficient funds!");
+											plugin.sendPlayer(playerObj, "You need " + payment.paymentOverCharge(price, playerName));
 											
 											return true;
 										}
