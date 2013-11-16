@@ -85,6 +85,7 @@ public class RPliteCommandExecutor implements CommandExecutor{
 							return true;
 						}else{
 							plugin.sendMessage(sender, "Error you must be a player to use that command");
+							return true;
 						}
 					}else{
 						if(args.length >= 2){
