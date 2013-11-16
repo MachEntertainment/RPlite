@@ -37,10 +37,10 @@ public class RPliteCommandExecutor implements CommandExecutor{
 				
 			}
 			
-			log.info("A command is being executed.");
-			log.info("Player: " + sender);
-			log.info("Command executing :" + cmd.toString());
-			log.info("Command Arguments: " + args.toString());
+//			log.info("A command is being executed.");
+//			log.info("Player: " + sender);
+//			log.info("Command executing :" + cmd.toString());
+//			log.info("Command Arguments: " + args.toString());
 			
 			if(args.length == 0){
 					plugin.sendMessage(sender, "Type /mach help for help or /mach classes for classes.");
@@ -307,7 +307,7 @@ public class RPliteCommandExecutor implements CommandExecutor{
 							
 							if(permission.isInGroup(world, playerName) == true){
 								
-								log.info(playerName + " is leaving class: " + args[1].toString());
+//								log.info(playerName + " is leaving class: " + args[1].toString());
 								permission.groupSub(world, playerName, args[1].toString());
 								
 								if(permission.isInGroup(world, playerName) == true){

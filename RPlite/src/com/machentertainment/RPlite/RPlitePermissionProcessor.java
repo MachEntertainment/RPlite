@@ -18,7 +18,7 @@ public class RPlitePermissionProcessor {
 	
 	public void groupAdd(String world, String playerName, String group){
 		
-		log.info("Adding " + playerName + "to group " + group);
+//		log.info("Adding " + playerName + "to group " + group);
 		RPlite.perms.playerAddGroup(world, playerName, group);
 		
 	}
@@ -32,7 +32,7 @@ public class RPlitePermissionProcessor {
 	
 	public void groupSub(String world, String playerName, String group){
 		
-		log.info("Removing " + playerName + " from group " + group);
+//		log.info("Removing " + playerName + " from group " + group);
 		RPlite.perms.playerRemoveGroup(world, playerName, group);
 		
 	}
@@ -71,7 +71,7 @@ public class RPlitePermissionProcessor {
 			return false;
 		}
 		
-		log.info("Permission Processor: Running a check to see if " + player + "is in group.");
+//		log.info("Permission Processor: Running a check to see if " + player + "is in group.");
 		
 		String[] classGroups = {"farmer", "blacksmith", "baker", "merchang", "noble", "baker", "miner"};
 		Boolean hasGroup = false;

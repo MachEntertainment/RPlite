@@ -1,10 +1,8 @@
 package com.machentertainment.RPlite;
 
-
 public class RPlitePaymentProcessor {
 	
 	private RPlite plugin;
-	
 	RPliteLogger log = new RPliteLogger(plugin);
 	
 	public RPlitePaymentProcessor(RPlite plugin){
@@ -20,7 +18,7 @@ public class RPlitePaymentProcessor {
 	public void paymentAdd(int payment, String playerName){
 		
 			RPlite.econ.depositPlayer(playerName, payment);
-			log.info("Payment Processor: " + playerName + " +"+payment);
+//			log.info("Payment Processor: " + playerName + " +"+payment);
 	}
 	
 	/**
@@ -31,7 +29,7 @@ public class RPlitePaymentProcessor {
 	 */
 	public boolean paymentSub(int payment, String playerName){
 		
-		log.info("Payment Processor: " + playerName + " -"+payment);
+//		log.info("Payment Processor: " + playerName + " -"+payment);
 		if(RPlite.econ.has(playerName, payment) == true){
 			RPlite.econ.withdrawPlayer(playerName, payment);
 			return true;
@@ -49,7 +47,7 @@ public class RPlitePaymentProcessor {
 	public double paymentOverCharge(int payment, String playerName){
 		
 		double diff = payment - RPlite.econ.getBalance(playerName);
-		log.info("Payment Processor: " + playerName + " ="+diff);
+//		log.info("Payment Processor: " + playerName + " ="+diff);
 		return diff;
 	}
 
