@@ -1,5 +1,6 @@
 package com.machentertainment.RPlite;
 
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -75,6 +76,25 @@ public class RPliteCommandExecutor implements CommandExecutor{
 					sender.sendMessage(ChatColor.GREEN + "/mach anno <message>: Broadcast a message to all players.");
 					
 					return true;
+				}
+				
+				if(args[0].equalsIgnoreCase("anno")){
+					if(args.length == 1){
+						if(isPlayer == true){
+							plugin.sendPlayer(playerObj, "A message is needed.");
+							return true;
+						}else{
+							plugin.sendMessage(sender, "Error you must be a player to use that command");
+						}
+					}else{
+						if(args.length >= 2){
+							String anno = "";
+							for (String string : args){
+								anno = (anno + string +" ");
+							}
+							Bukkit.broadcastMessage(ChatColor.BLUE + "[" + ChatColor.GRAY + sender.getName() + ChatColor.BLUE + "] " + ChatColor.GREEN + ChatColor.translateAlternateColorCodes('&', anno));
+						}
+					}
 				}
 				
 				if(args[0].equalsIgnoreCase("join")){
