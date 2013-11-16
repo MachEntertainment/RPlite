@@ -73,7 +73,7 @@ public final class RPlite extends JavaPlugin{
 	
 	@Override
 	public void onDisable(){
-		getLogger().info("RPLite has been disabled");
+		log.info("RPLite has been disabled");
 	}
 	
 	//Vault
@@ -111,16 +111,8 @@ public final class RPlite extends JavaPlugin{
   	}
 	
 	//Console Logging (Config based)
-	public void sendLog(String level, String Message){
-		
-		if(verbose == true){
-			if(level.equals("info")){
-				getLogger().info(Message);
-			}else{
-				getLogger().warning(Message);
-			}
-		}else{
-			getLogger().warning(Message);
+	public void sendLog(String Message){
+		if(verbose = true){
 		}
 	}
 

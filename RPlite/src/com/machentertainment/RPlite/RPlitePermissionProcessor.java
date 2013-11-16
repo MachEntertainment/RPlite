@@ -3,7 +3,7 @@ package com.machentertainment.RPlite;
 public class RPlitePermissionProcessor {
 	
 	private RPlite plugin;
-	
+	RPliteLogger log = new RPliteLogger(plugin);
 	
 	public RPlitePermissionProcessor(RPlite plugin){
 		this.plugin = plugin;
@@ -18,7 +18,7 @@ public class RPlitePermissionProcessor {
 	
 	public void groupAdd(String world, String playerName, String group){
 		
-//		plugin.sendLog("info", "Adding " + playerName + "to group " + group);
+		log.info("Adding " + playerName + "to group " + group);
 		RPlite.perms.playerAddGroup(world, playerName, group);
 		
 	}
@@ -32,7 +32,7 @@ public class RPlitePermissionProcessor {
 	
 	public void groupSub(String world, String playerName, String group){
 		
-//		plugin.sendLog("info", "Removing " + playerName + " from group " + group);
+		log.info("Removing " + playerName + " from group " + group);
 		RPlite.perms.playerRemoveGroup(world, playerName, group);
 		
 	}
@@ -63,19 +63,17 @@ public class RPlitePermissionProcessor {
 	public boolean isInGroup(String world, String player){
 		
 		if(player == null){
-//			plugin.sendLog("severe", "ERROR!! playerObj was NULL!!");
 			
 			return false;
 		}
 		if(world == null){
-//			plugin.sendLog("severe", "ERROR!! world was NULL!!");
 			
 			return false;
 		}
 		
-//		plugin.sendLog("info","Permission Processor: Running a check to see if " + player + "is in group.");
+		log.info("Permission Processor: Running a check to see if " + player + "is in group.");
 		
-		String[] classGroups = {"farmer", "blacksmith", "baker", "merchang", "noble"};
+		String[] classGroups = {"farmer", "blacksmith", "baker", "merchang", "noble", "baker", "miner"};
 		Boolean hasGroup = false;
 		
 		for(String group : classGroups){
@@ -86,10 +84,10 @@ public class RPlitePermissionProcessor {
 		}
 		
 		if(hasGroup == true){
-//			plugin.sendLog("info", "Permission Processor: The Player is in a group.");
+			log.info("Permission Processor: The Player is in a group.");
 			return true;
 		}else{
-//			plugin.sendLog("info", "Permission Processor: The Player is not in a group.");
+			log.info( "Permission Processor: The Player is not in a group.");
 			return false;
 		}
 		

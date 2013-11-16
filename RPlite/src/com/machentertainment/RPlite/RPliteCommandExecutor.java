@@ -12,6 +12,7 @@ public class RPliteCommandExecutor implements CommandExecutor{
 	
 	RPlitePaymentProcessor payment = new RPlitePaymentProcessor(plugin);
 	RPlitePermissionProcessor permission = new RPlitePermissionProcessor(plugin);
+	RPliteLogger log = new RPliteLogger(plugin);
 	
 	
 	public RPliteCommandExecutor(RPlite plugin){
@@ -35,10 +36,10 @@ public class RPliteCommandExecutor implements CommandExecutor{
 				
 			}
 			
-			plugin.sendLog("info", "A command is being executed.");
-			plugin.sendLog("info", "Player: " + sender);
-			plugin.sendLog("info", "Command executing :" + cmd.toString());
-			plugin.sendLog("info", "Command Arguments: " + args.toString());
+			log.info("A command is being executed.");
+			log.info("Player: " + sender);
+			log.info("Command executing :" + cmd.toString());
+			log.info("Command Arguments: " + args.toString());
 			
 			if(args.length == 0){
 					plugin.sendMessage(sender, "Type /mach help for help or /mach classes for classes.");
@@ -51,12 +52,13 @@ public class RPliteCommandExecutor implements CommandExecutor{
 				if(args[0].equalsIgnoreCase("classes")){
 					sender.sendMessage(ChatColor.GOLD + "____RPLite Class List____");
 					sender.sendMessage(ChatColor.DARK_GREEN + "Class - Description");
-					sender.sendMessage(ChatColor.GREEN + "Baker - Has the ability to cook advanced foods.");
-					sender.sendMessage(ChatColor.GREEN + "Banker - Has the ability to loan money to players.");
-					sender.sendMessage(ChatColor.GREEN + "Blacksmith - Has the ability to create tools, weapons, and armour.");
-					sender.sendMessage(ChatColor.GREEN + "Farmer - Has the ability to farm food items.");
-					sender.sendMessage(ChatColor.GREEN + "Merchant - Has the ability to create shops.");
-					sender.sendMessage(ChatColor.GREEN + "Noble - Asthetic rank when a certain monetary amount is reached.");
+					sender.sendMessage(ChatColor.GREEN + "Baker " + ChatColor.GRAY + "- Has the ability to cook advanced foods." + ChatColor.RED + "(Not implemented)");
+					sender.sendMessage(ChatColor.GREEN + "Banker " + ChatColor.GRAY + "- Has the ability to loan money to players." + ChatColor.RED + "(Not implemented)");
+					sender.sendMessage(ChatColor.GREEN + "Blacksmith " + ChatColor.GRAY + "- Has the ability to create tools, weapons, and armour.");
+					sender.sendMessage(ChatColor.GREEN + "Farmer " + ChatColor.GRAY + "- Has the ability to farm food items.");
+					sender.sendMessage(ChatColor.GREEN + "Miner " + ChatColor.GRAY + "- Has the ability to mine for ores.");
+					sender.sendMessage(ChatColor.GREEN + "Merchant " + ChatColor.GRAY + "- Has the ability to create shops. " + ChatColor.RED + "(Not implemented)");
+					sender.sendMessage(ChatColor.GREEN + "Noble " + ChatColor.GRAY + "- Asthetic rank when a certain monetary amount is reached.");
 					
 					//TODO
 					return true;
@@ -70,6 +72,7 @@ public class RPliteCommandExecutor implements CommandExecutor{
 					sender.sendMessage(ChatColor.GREEN + "/mach classes: Lists classes");
 					sender.sendMessage(ChatColor.GREEN + "/mach join <class>: Joins a class");
 					sender.sendMessage(ChatColor.GREEN + "/mach leave <class>: Leaves the designated class.");
+					sender.sendMessage(ChatColor.GREEN + "/mach anno <message>: Broadcast a message to all players.");
 					
 					return true;
 				}
@@ -284,7 +287,7 @@ public class RPliteCommandExecutor implements CommandExecutor{
 							
 							if(permission.isInGroup(world, playerName) == true){
 								
-								plugin.sendLog("info",playerName + " is leaving class: " + args[1].toString());
+								log.info(playerName + " is leaving class: " + args[1].toString());
 								permission.groupSub(world, playerName, args[1].toString());
 								
 								if(permission.isInGroup(world, playerName) == true){
