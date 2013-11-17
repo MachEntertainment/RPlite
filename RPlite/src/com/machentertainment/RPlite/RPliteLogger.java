@@ -14,7 +14,7 @@ public class RPliteLogger {
 			plugin.getLogger().info(message);
 		}
 	}
-	
+
 	public void severe(String message){
 		if(verbose == true){
 			plugin.getLogger().severe(message);

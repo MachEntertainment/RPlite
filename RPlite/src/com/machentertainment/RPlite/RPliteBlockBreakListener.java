@@ -25,6 +25,7 @@ public class RPliteBlockBreakListener implements Listener {
         public Material[] oreBlocks = {Material.COAL_ORE, Material.IRON_ORE, Material.GOLD_ORE, Material.EMERALD_ORE, Material.DIAMOND_ORE, Material.REDSTONE_ORE};
         public Material[] farmingBlocks = {Material.GRASS, Material.DIRT};
         public Material[] choppingBlocks = {Material.LOG, Material.WOOD, Material.WOOD_STAIRS, Material.WOOD_STEP, Material.WOOD_DOUBLE_STEP, Material.BOOKSHELF, Material.WOOD_DOOR};
+        public Material[] loggingBlocks = {Material.LOG};
         
         public Material[] diggingTools = {Material.WOOD_SPADE, Material.STONE_SPADE, Material.IRON_SPADE, Material.GOLD_SPADE, Material.DIAMOND_SPADE};
         public Material[] miningTools = {Material.WOOD_PICKAXE, Material.STONE_PICKAXE, Material.IRON_PICKAXE, Material.GOLD_PICKAXE, Material.DIAMOND_PICKAXE};
@@ -59,8 +60,14 @@ public class RPliteBlockBreakListener implements Listener {
                 	plugin.sendPlayer(player, "You do not have the right tool");
                 }
                 
-                if(Arrays.asList(oreBlocks).contains(blockType) && (Arrays.asList(miningTools).contains(tool)) && !(permission.hasPerm(world, playerName, "rplite.admin")) == false && !(player.getGameMode() == GameMode.CREATIVE) && (permission.hasPerm(world, playerName, "rplite.miner") == false)){
-            		plugin.getLogger().info("Block listener: Mining ore event cancelled");
+                if(Arrays.asList(oreBlocks).contains(blockType) && (Arrays.asList(miningTools).contains(tool)) && permission.hasPerm(world, playerName, "rplite.admin") == false && !(player.getGameMode() == GameMode.CREATIVE) && permission.hasPerm(world, playerName, "rplite.miner") == false){
+            		plugin.getLogger().info("Block listener: Ore mining event cancelled");
+            		event.setCancelled(true);
+            		plugin.sendPlayer(player, "You do not have the skill to do that.");
+            	}
+                
+                if(Arrays.asList(loggingBlocks).contains(blockType) && (Arrays.asList(choppingTools).contains(tool)) && permission.hasPerm(world, playerName, "rplite.admin") == false && !(player.getGameMode() == GameMode.CREATIVE) && permission.hasPerm(world, playerName, "rplite.logger") == false){
+            		plugin.getLogger().info("Block listener: Ore mining event cancelled");
             		event.setCancelled(true);
             		plugin.sendPlayer(player, "You do not have the skill to do that.");
             	}

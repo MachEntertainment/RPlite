@@ -84,10 +84,10 @@ public class RPlitePermissionProcessor {
 		}
 		
 		if(hasGroup == true){
-			log.info("Permission Processor: The Player is in a group.");
+//			log.info("Permission Processor: The Player is in a group.");
 			return true;
 		}else{
-			log.info( "Permission Processor: The Player is not in a group.");
+//			log.info( "Permission Processor: The Player is not in a group.");
 			return false;
 		}
 		
