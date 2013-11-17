@@ -63,12 +63,12 @@ public class RPliteCommandExecutor implements CommandExecutor{
 				if(args[0].equalsIgnoreCase("classes")){
 					sender.sendMessage(ChatColor.GOLD + "____RPLite Class List____");
 					sender.sendMessage(ChatColor.DARK_GREEN + "Class - Description");
-					sender.sendMessage(ChatColor.GREEN + "Baker " + ChatColor.GRAY + "- Has the ability to cook advanced foods." + ChatColor.RED + "(Not implemented)");
-					sender.sendMessage(ChatColor.GREEN + "Banker " + ChatColor.GRAY + "- Has the ability to loan money to players." + ChatColor.RED + "(Not implemented)");
-					sender.sendMessage(ChatColor.GREEN + "Blacksmith " + ChatColor.GRAY + "- Has the ability to create tools, weapons, and armour.");
 					sender.sendMessage(ChatColor.GREEN + "Farmer " + ChatColor.GRAY + "- Has the ability to farm food items.");
 					sender.sendMessage(ChatColor.GREEN + "Logger " + ChatColor.GRAY + "- Has the ability to cut down wood.");
 					sender.sendMessage(ChatColor.GREEN + "Miner " + ChatColor.GRAY + "- Has the ability to mine for ores.");
+					sender.sendMessage(ChatColor.GREEN + "Baker " + ChatColor.GRAY + "- Has the ability to cook advanced foods." + ChatColor.RED + "(Not implemented)");
+					sender.sendMessage(ChatColor.GREEN + "Blacksmith " + ChatColor.GRAY + "- Has the ability to create tools, weapons, and armour.");
+					sender.sendMessage(ChatColor.GREEN + "Banker " + ChatColor.GRAY + "- Has the ability to loan money to players." + ChatColor.RED + "(Not implemented)");
 					sender.sendMessage(ChatColor.GREEN + "Merchant " + ChatColor.GRAY + "- Has the ability to create shops. " + ChatColor.RED + "(Not implemented)");
 					sender.sendMessage(ChatColor.GREEN + "Noble " + ChatColor.GRAY + "- Asthetic rank when a certain monetary amount is reached.");
 					
@@ -79,12 +79,12 @@ public class RPliteCommandExecutor implements CommandExecutor{
 				if(args[0].equalsIgnoreCase("prices")){
 					sender.sendMessage(ChatColor.GOLD + "____RPLite Price List____");
 					sender.sendMessage(ChatColor.DARK_GREEN + "Class - Description");
-					sender.sendMessage(ChatColor.GREEN + "Baker " + ChatColor.GRAY + "- " + bakerPrice);
-					sender.sendMessage(ChatColor.GREEN + "Banker " + ChatColor.GRAY + "- " + bankerPrice);
-					sender.sendMessage(ChatColor.GREEN + "Blacksmith " + ChatColor.GRAY + "- " + blacksmithPrice);
 					sender.sendMessage(ChatColor.GREEN + "Farmer " + ChatColor.GRAY + "- " + farmerPrice);
 					sender.sendMessage(ChatColor.GREEN + "Logger " + ChatColor.GRAY + "- " + loggerPrice);
 					sender.sendMessage(ChatColor.GREEN + "Miner " + ChatColor.GRAY + "- " + minerPrice);
+					sender.sendMessage(ChatColor.GREEN + "Baker " + ChatColor.GRAY + "- " + bakerPrice);
+					sender.sendMessage(ChatColor.GREEN + "Blacksmith " + ChatColor.GRAY + "- " + blacksmithPrice);
+					sender.sendMessage(ChatColor.GREEN + "Banker " + ChatColor.GRAY + "- " + bankerPrice);
 					sender.sendMessage(ChatColor.GREEN + "Merchant " + ChatColor.GRAY + "- " + merchantPrice);
 					sender.sendMessage(ChatColor.GREEN + "Noble " + ChatColor.GRAY + "- " + noblePrice);
 					
@@ -101,12 +101,12 @@ public class RPliteCommandExecutor implements CommandExecutor{
 					sender.sendMessage(ChatColor.GREEN + "/mach prices: " + ChatColor.GRAY + " Get the prices for the classes.");
 					sender.sendMessage(ChatColor.GREEN + "/mach join <class>: " + ChatColor.GRAY + " Joins a class");
 					sender.sendMessage(ChatColor.GREEN + "/mach leave <class>: " + ChatColor.GRAY + " Leaves the designated class.");
-					sender.sendMessage(ChatColor.GREEN + "/mach announce <message>: " + ChatColor.GRAY + " Broadcast a message to all players.");
+					sender.sendMessage(ChatColor.GREEN + "/mach declare <message>: " + ChatColor.GRAY + " Broadcast a message to all players.");
 					
 					return true;
 				}
 				
-				if(args[0].equalsIgnoreCase("announce")){
+				if(args[0].equalsIgnoreCase("declare")){
 					if(permission.hasPerm(world, playerName, "rplite.merchant")){
 						if(args.length == 1){
 							if(isPlayer == true){
@@ -117,14 +117,13 @@ public class RPliteCommandExecutor implements CommandExecutor{
 								return true;
 							}
 						}else{
-							if(args.length >= 3){
+							if(args.length > 2){
 								String anno = "";
 								
 								for (String string : args){
 									anno = (anno + string +" ");
 								}
 								Bukkit.broadcastMessage(ChatColor.BLUE + "[" + ChatColor.RED + "RPlite Announce " + ChatColor.BLUE + "] " + ChatColor.GRAY + sender.getName() + ": " + ChatColor.GREEN + ChatColor.translateAlternateColorCodes('&', anno));
-								return true;
 							}
 						}
 					}else{
