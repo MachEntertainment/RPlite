@@ -117,13 +117,14 @@ public class RPliteCommandExecutor implements CommandExecutor{
 								return true;
 							}
 						}else{
-							if(args.length > 2){
+							if(args.length >= 2){
 								String anno = "";
 								
 								for (String string : args){
-									anno = (anno + string +" ");
+									anno = (anno + string + string +" ");
 								}
 								Bukkit.broadcastMessage(ChatColor.BLUE + "[" + ChatColor.RED + "RPlite Announce " + ChatColor.BLUE + "] " + ChatColor.GRAY + sender.getName() + ": " + ChatColor.GREEN + ChatColor.translateAlternateColorCodes('&', anno));
+								return true;
 							}
 						}
 					}else{
