@@ -14,6 +14,7 @@ public class RPlitePlayerInteractListener implements Listener{
 	
 	private RPlite plugin;
 	RPlitePermissionProcessor permission = new RPlitePermissionProcessor(plugin);
+	RPliteLogger log = new RPliteLogger(plugin);
 	
 	public RPlitePlayerInteractListener(RPlite instance){
 		plugin = instance;
@@ -36,14 +37,14 @@ public class RPlitePlayerInteractListener implements Listener{
 		    	
 		    if(Arrays.asList(farmingBlocks).contains(block) && Arrays.asList(farmingTools).contains(tool) && click == Action.RIGHT_CLICK_BLOCK && RPlite.perms.playerHas(world, player.getName(), "rplite.farmer") == false){
 			    if(permission.hasPerm(world, player.getName(), "rplite.admin") == false && !(player.getGameMode() == GameMode.CREATIVE)){
-				    plugin.getLogger().info("InteractListener: Farm event cancelled");
+				    log.info("InteractListener: Farm event cancelled");
 				    event.setCancelled(true);
 			    }
 		    }
 		    
 		    if(Arrays.asList(craftingBlocks).contains(block) && click == Action.RIGHT_CLICK_BLOCK && RPlite.perms.playerHas(world, player.getName(), "rplite.blacksmith") == false){
 			    if(permission.hasPerm(world, player.getName(), "rplite.admin") == false && !(player.getGameMode() == GameMode.CREATIVE)){
-				    plugin.getLogger().info("InteractListener: Anvil event cancelled");
+				    log.info("InteractListener: Anvil event cancelled");
 				    plugin.sendPlayer(player, "You do not have the skill to do that.");
 				    event.setCancelled(true);
 			    }

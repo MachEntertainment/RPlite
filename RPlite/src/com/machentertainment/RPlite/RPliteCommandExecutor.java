@@ -1,7 +1,5 @@
 package com.machentertainment.RPlite;
 
-import java.util.List;
-
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
@@ -15,7 +13,7 @@ public class RPliteCommandExecutor implements CommandExecutor{
 	
 	RPlitePaymentProcessor payment = new RPlitePaymentProcessor(plugin);
 	RPlitePermissionProcessor permission = new RPlitePermissionProcessor(plugin);
-	RPliteLogger log = new RPliteLogger(plugin);
+	RPliteAnnouncer announcer = new RPliteAnnouncer(plugin);
 	
 	public int bakerPrice = 300;
 	public int bankerPrice = 500;
@@ -32,6 +30,8 @@ public class RPliteCommandExecutor implements CommandExecutor{
 	
 	@Override
 	public boolean onCommand(CommandSender sender,Command cmd, String label, String[] args){
+		
+		RPliteLogger log = new RPliteLogger(plugin);
 		
 		if(cmd.getName().equalsIgnoreCase("mach")) {
 			
@@ -102,6 +102,18 @@ public class RPliteCommandExecutor implements CommandExecutor{
 					sender.sendMessage(ChatColor.GREEN + "/mach join <class>: " + ChatColor.GRAY + " Joins a class");
 					sender.sendMessage(ChatColor.GREEN + "/mach leave <class>: " + ChatColor.GRAY + " Leaves the designated class.");
 					sender.sendMessage(ChatColor.GREEN + "/mach declare <message>: " + ChatColor.GRAY + " Broadcast a message to all players.");
+					
+					return true;
+				}
+				
+				if(args[0].equalsIgnoreCase("reload")){
+					plugin.reloadConfig();
+					plugin.announce.refreshAnnouncer();
+					log.reload();
+					plugin.sendMessage(sender, "Config reloaded.");
+					plugin.sendMessage(sender, "Announcer reloaded.");
+					plugin.sendMessage(sender, "Verbose reloaded.");
+					plugin.sendMessage(sender, "Version: " + plugin.getDescription().getVersion());
 					
 					return true;
 				}

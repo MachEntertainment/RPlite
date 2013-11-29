@@ -24,6 +24,7 @@ public class RPliteBlockBreakListener implements Listener {
         public Material[] miningBlocks = {Material.STONE, Material.COBBLESTONE, Material.COBBLE_WALL, Material.COBBLESTONE_STAIRS, Material.MOSSY_COBBLESTONE, Material.COAL_ORE, Material.COAL_BLOCK, Material.IRON_ORE, Material.DIAMOND_ORE, Material.REDSTONE_ORE, Material.REDSTONE_BLOCK}; //TODO
         public Material[] oreBlocks = {Material.COAL_ORE, Material.IRON_ORE, Material.GOLD_ORE, Material.EMERALD_ORE, Material.DIAMOND_ORE, Material.REDSTONE_ORE};
         public Material[] farmingBlocks = {Material.GRASS, Material.DIRT};
+        public Material[] cropBlocks = {Material.CROPS};
         public Material[] choppingBlocks = {Material.LOG, Material.WOOD, Material.WOOD_STAIRS, Material.WOOD_STEP, Material.WOOD_DOUBLE_STEP, Material.BOOKSHELF, Material.WOOD_DOOR};
         public Material[] loggingBlocks = {Material.LOG};
         
@@ -40,37 +41,44 @@ public class RPliteBlockBreakListener implements Listener {
                 Block block = event.getBlock();
                 Material blockType = block.getType();
                 Material tool = event.getPlayer().getItemInHand().getType();
+                RPliteLogger log = new RPliteLogger(plugin);
                 
                 if(Arrays.asList(diggingBlocks).contains(blockType) && !(Arrays.asList(diggingTools).contains(tool)) && permission.hasPerm(world, playerName, "rplite.admin") == false && !(player.getGameMode() == GameMode.CREATIVE)){
-                	plugin.getLogger().info("Block listener: Dig event canelled.");
+                	log.info("Block listener: Dig event canelled.");
                 	event.setCancelled(true);
                 	plugin.sendPlayer(player, "You do not have the right tool");
                 }
                 
                 if(Arrays.asList(miningBlocks).contains(blockType) && !(Arrays.asList(miningTools).contains(tool)) && permission.hasPerm(world, playerName, "rplite.admin") == false && !(player.getGameMode() == GameMode.CREATIVE)){
                 	
-                	plugin.getLogger().info("Block listener: Mining event cancelled.");
+                	log.info("Block listener: Mining event cancelled.");
                 	event.setCancelled(true);
                 	plugin.sendPlayer(player, "You do not have the right tool");
                 }
                 
                 if(Arrays.asList(choppingBlocks).contains(blockType) && !(Arrays.asList(choppingTools).contains(tool)) && permission.hasPerm(world, playerName, "rplite.admin") == false && !(player.getGameMode() == GameMode.CREATIVE)){
-                	plugin.getLogger().info("Block listener: Chopping event canelled.");
+                	log.info("Block listener: Chopping event canelled.");
                 	event.setCancelled(true);
                 	plugin.sendPlayer(player, "You do not have the right tool");
                 }
                 
                 if(Arrays.asList(oreBlocks).contains(blockType) && (Arrays.asList(miningTools).contains(tool)) && permission.hasPerm(world, playerName, "rplite.admin") == false && !(player.getGameMode() == GameMode.CREATIVE) && permission.hasPerm(world, playerName, "rplite.miner") == false){
-            		plugin.getLogger().info("Block listener: Ore mining event cancelled");
+            		log.info("Block listener: Ore mining event cancelled");
             		event.setCancelled(true);
             		plugin.sendPlayer(player, "You do not have the skill to do that.");
             	}
                 
                 if(Arrays.asList(loggingBlocks).contains(blockType) && (Arrays.asList(choppingTools).contains(tool)) && permission.hasPerm(world, playerName, "rplite.admin") == false && !(player.getGameMode() == GameMode.CREATIVE) && permission.hasPerm(world, playerName, "rplite.logger") == false){
-            		plugin.getLogger().info("Block listener: Ore mining event cancelled");
+            		log.info("Block listener: Ore mining event cancelled");
             		event.setCancelled(true);
             		plugin.sendPlayer(player, "You do not have the skill to do that.");
             	}
+                
+                if(Arrays.asList(cropBlocks).contains(blockType) && permission.hasPerm(world, playerName, "rplite.admin") == false && !(player.getGameMode() == GameMode.CREATIVE) && permission.hasPerm(world, playerName, "rplite.farmer") == false){
+                	log.info("Block listener: Crop break event cancelled");
+                	event.setCancelled(true);
+                	plugin.sendPlayer(player, "You do not have the skill to do that. Try buying food instead.");
+                }
         }
  
 }

@@ -1,5 +1,6 @@
 package com.machentertainment.RPlite;
 
+import java.util.List;
 import java.util.logging.Logger;
 
 import net.milkbowl.vault.chat.Chat;
@@ -16,10 +17,13 @@ import org.bukkit.entity.Player;
 public final class RPlite extends JavaPlugin{
 	
 	Boolean verbose;
-	private static final Logger log = Logger.getLogger("Minecraft");
+//	private static final Logger log = Logger.getLogger("Minecraft");
     public static Economy econ = null;
     public static Permission perms = null;
     public static Chat chat = null;
+    public RPliteAnnouncer announce = new RPliteAnnouncer(this);
+    
+    RPliteLogger log = new RPliteLogger(this);
 	
 	@Override
 	public void onEnable() {
@@ -27,19 +31,13 @@ public final class RPlite extends JavaPlugin{
 		
 		getLogger().info("RPlite is now starting.");
 		
-		this.getConfig();
-		if(this.getConfig().getInt("config") != 1){
+		this.saveDefaultConfig();
+		if(this.getConfig().getInt("config") != 3){
 			this.saveDefaultConfig();
-			getLogger().severe("The config file was malformed or missing.  Saving default config.");
+			getLogger().severe("The config file was malformed or missing.  Please delete the old config for a new one.");
 		}else{
 			getLogger().info("Loaded config file.");
-		}
-		
-		if(this.getConfig().getBoolean("Verbose") == true) {
-			verbose = true;
-		}else{
-			verbose = false;
-		}
+		}	
 		
 		getLogger().info("Registering player commands");
 		//Start getting commands
@@ -60,6 +58,9 @@ public final class RPlite extends JavaPlugin{
 		pm.registerEvents(new RPliteBlockBreakListener(this), this);
 		pm.registerEvents(new RPlitePlayerInteractListener(this), this);
 		pm.registerEvents(new RPliteCraftingListener(this), this);
+		
+		//Scheduled Events
+		announce.broadcastAnnouncerThread();
 		
 		//Vault
 		if (!setupEconomy() ) {
@@ -112,11 +113,22 @@ public final class RPlite extends JavaPlugin{
   		sender.sendMessage(ChatColor.GOLD + "[" + ChatColor.RED + "RPLite" + ChatColor.GOLD + "]: " + ChatColor.GREEN + message);
   	}
 	
-	//Console Logging (Config based)
-	public void sendLog(String Message){
-		if(verbose = true){
-		}
+	//Configuration Files
+	public List<String> getAnnouncements(){
+		List<String> announcements = getConfig().getStringList("broadcast.broadcasts");
+		
+		return announcements;
 	}
-
-
+	
+	public int getAnnouncementInterval(){
+		int broadcastInterval = getConfig().getInt("broadcast.interval") * 20;
+		
+		return broadcastInterval;
+	}
+	
+	public boolean getVerbose(){
+		boolean verbose = getConfig().getBoolean("verbose", true);
+		
+		return verbose;
+	}
 }

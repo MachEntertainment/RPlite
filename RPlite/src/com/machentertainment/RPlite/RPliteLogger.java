@@ -5,8 +5,8 @@ public class RPliteLogger {
 	private RPlite plugin;
 	public boolean verbose = true;
 	
-	public RPliteLogger(RPlite plugin){
-		this.plugin = plugin;
+	public RPliteLogger(RPlite instance){
+		plugin = instance;
 	}
 	
 	public void info(String message){
@@ -19,5 +19,9 @@ public class RPliteLogger {
 		if(verbose == true){
 			plugin.getLogger().severe(message);
 		}
+	}
+	
+	public void reload(){
+		verbose = plugin.getVerbose();
 	}
 }

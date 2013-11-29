@@ -1,6 +1,14 @@
 #This is the configuration file for Mach Entertainment's RPlite.
 #The following information should not be touched.
-config: 1
-version: '0.1ALPHA'
-verbose: TRUE
+config: 3
+verbose: false
 #The following can be changed
+#All times are in seconds, unless specified otherwise.
+
+broadcast:
+  enabled: true
+  interval: 60
+  broadcasts:
+  - Server Admins, change your config file.
+  - This is the default broadcast message.  Change me in the config.
+  - Welcome to the NCR radio.
